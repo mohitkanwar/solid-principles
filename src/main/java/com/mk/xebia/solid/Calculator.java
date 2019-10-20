@@ -12,7 +12,7 @@ public class Calculator {
     private double calculate(String input) {
        double firstInput = getFirstInput(input);
        String operation = getOperation(input);
-       OperationFactory operationFactory = new OperationFactory();
+       OperationFactory operationFactory = new PropertiesOperationFactory();
        double secondInput = getSecondInput(input,operation);
        return operationFactory.getOperation(operation).operate(firstInput,secondInput);
     }
