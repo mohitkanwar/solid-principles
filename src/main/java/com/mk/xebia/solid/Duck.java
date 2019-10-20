@@ -1,20 +1,23 @@
 package com.mk.xebia.solid;
 
-public class Ostrich implements Bird {
-
+public class Duck implements Bird,Fish {
     @Override
     public void eat(double foodQuantity) {
-        // do sometihing
+
+    }
+
+    @Override
+    public void swim() {
+
     }
 
     @Override
     public void chirp() {
-        // do something
 
     }
 
     @Override
     public void fly() {
-        throw new UnsupportedOperationException();
+
     }
 }
