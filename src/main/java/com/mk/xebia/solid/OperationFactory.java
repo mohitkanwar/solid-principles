@@ -1,3 +1,5 @@
+package com.mk.xebia.solid;
+
 public class OperationFactory {
     public Operation getOperation(String op){
         switch (op){

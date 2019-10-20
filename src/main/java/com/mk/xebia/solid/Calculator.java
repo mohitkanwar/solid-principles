@@ -1,4 +1,4 @@
-
+package com.mk.xebia.solid;
 
 public class Calculator {
     public static void main(String[] args) {
