@@ -10,33 +10,48 @@ public class Calculator {
     }
 
     private double calculate(String input) {
-        String[] inputs = input.split("");
+       double firstInput = getFirstInput(input);
+       String operation = getOperation(input);
+       OperationFactory operationFactory = new OperationFactory();
+       double secondInput = getSecondInput(input,operation);
+       return operationFactory.getOperation(operation).operate(firstInput,secondInput);
+    }
 
-        double returnValue = 0;
+    private double getSecondInput(String input, String operation) {
+        int operationPosition = input.indexOf(operation);
+        return Double.parseDouble(input.substring(operationPosition+1));
+    }
+
+    private String getOperation(String input) {
+        String operation = "+";
+        String[] inputs = input.split("");
         for (int i=0;i<inputs.length;i++){
-            String val = inputs[i];
-            if(val.equals("+")){
-                returnValue = returnValue + Double.valueOf(inputs[i+1]);
-                i++;
+            try{
+               Integer.parseInt(inputs[i]);
             }
-            else if(val.equals("-")){
-                returnValue = returnValue - Double.valueOf(inputs[i+1]);
-                i++;
-            }
-            else if(val.equals("*")){
-                returnValue = returnValue * Double.valueOf(inputs[i+1]);
-                i++;
-            }
-            else if(val.equals("/")){
-                returnValue = returnValue / Double.valueOf(inputs[i+1]);
-                i++;
-            }
-            else {
-                returnValue = Double.valueOf(inputs[i]);
+            catch (NumberFormatException e){
+                operation = inputs[i];
             }
 
         }
+        return operation;
+    }
 
-        return returnValue;
+    private double getFirstInput(String input) {
+        double value = 0;
+        String[] inputs = input.split("");
+        for (int i=0;i<inputs.length;i++){
+            try{
+                int a = Integer.parseInt(inputs[i]);
+                value = 10 * value + a;
+            }
+            catch (NumberFormatException e){
+                return value;
+            }
+
+        }
+        return value;
     }
 }
+
+
