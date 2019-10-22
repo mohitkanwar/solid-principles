@@ -1,11 +1,10 @@
 package com.mk.xebia.solid;
 
+import com.mk.xebia.solid.controllers.HelloWorldController;
+
 public class Main {
     public static void main(String[] args) {
-        Rectangle rectangle = new Rectangle();
-        rectangle.setLength(10);
-        rectangle.setWidth(2);
-        System.out.println(rectangle.getArea()==20);
-        System.out.println(rectangle.getParameter()==24);
+     HelloWorldController helloWorldController = new HelloWorldController();
+        System.out.println(helloWorldController.greet());
     }
 }
